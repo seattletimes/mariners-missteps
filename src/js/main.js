@@ -9,6 +9,7 @@ var $ = require("./lib/qsa");
 var events = $(".event").reverse();
 var timeline = $.one(".timeline");
 var fanContainer = $.one(".fans");
+var meterReading = $.one(".fans .meter .enthusiasm");
 var fans = {
   happy: {},
   sad: {}
@@ -33,7 +34,7 @@ window.addEventListener("scroll", function() {
     fanContainer.classList.add("hidden");
     return;
   }
-  var mood = 6;
+  var mood = 0;
   for (var i = 0; i < events.length; i++) {
     var e = events[i];
     var bounds = e.getBoundingClientRect();
@@ -42,13 +43,16 @@ window.addEventListener("scroll", function() {
       break;
     }
   }
+  var bars = "▓";
   for (var j = 1; j <= 6; j++) {
     if (j <= mood) {
       fans.happy[j].classList.add("show");
       fans.sad[j].classList.remove("show");
+      bars += "▓";
     } else {
       fans.happy[j].classList.remove("show");
       fans.sad[j].classList.add("show");
     }
   }
+  meterReading.innerHTML = bars;
 });

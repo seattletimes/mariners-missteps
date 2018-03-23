@@ -36,6 +36,9 @@
       </section>
 
       <div class="fans" aria-hidden="true">
+        <div class="meter">
+          Enthusiasm: <span class="enthusiasm"></span>
+        </div>
         <% for (var i = 1; i < 7; i++) { %>
         <img src="./assets/fans/h-<%= i %>.png" class="happy" data-fan="<%= i %>">
         <img src="./assets/fans/s-<%= i %>.png" class="sad" data-fan="<%= i %>">
