@@ -12,6 +12,14 @@
 
     <header class="splash">
       <h1>Mariners Missteps</h1>
+      <h2>
+        A history of disappointment
+      </h2>
+      <div class="triplets">
+        <img src="./assets/photos/mariners1.jpg">
+        <img src="./assets/photos/mariners2.jpg">
+        <img src="./assets/photos/mariners3.jpg">
+      </div>
       <div class="chatter">
         <%= grunt.renderMarkdown(json.strings.intro.text) %>
       </div>
@@ -36,13 +44,13 @@
       </section>
 
       <div class="fans" aria-hidden="true">
-        <div class="meter">
-          Enthusiasm: <span class="enthusiasm"></span>
-        </div>
         <% for (var i = 1; i < 7; i++) { %>
         <img src="./assets/fans/h-<%= i %>.png" class="happy" data-fan="<%= i %>">
         <img src="./assets/fans/s-<%= i %>.png" class="sad" data-fan="<%= i %>">
         <% } %>
+        <div class="meter">
+          Enthusiasm: <span class="enthusiasm"></span>
+        </div>
       </div>
 
     </main>

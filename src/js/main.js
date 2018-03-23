@@ -5,6 +5,7 @@
 require("component-responsive-frame/child");
 
 var $ = require("./lib/qsa");
+var debounce = require("./lib/debounce");
 
 var events = $(".event").reverse();
 var timeline = $.one(".timeline");
@@ -26,7 +27,7 @@ $(".fans img").forEach(function(img) {
 
 var currentMood = 0;
 
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", debounce(function() {
   var tBounds = timeline.getBoundingClientRect();
   if (tBounds.top < window.innerHeight && tBounds.bottom > window.innerHeight) {
     fanContainer.classList.remove("hidden");
@@ -43,6 +44,8 @@ window.addEventListener("scroll", function() {
       break;
     }
   }
+  if (currentMood == mood) return;
+  currentMood = mood;
   var bars = "▓";
   for (var j = 1; j <= 6; j++) {
     if (j <= mood) {
@@ -55,4 +58,4 @@ window.addEventListener("scroll", function() {
     }
   }
   meterReading.innerHTML = bars;
-});
+}));
