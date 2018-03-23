@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <%= t.include("partials/_nav.html") %>
+
+    <%= t.include("partials/_ad.html", { type: "banner" }) %>
+
+    <header class="splash">
+      <h1>Mariners Missteps</h1>
+      <div class="chatter">
+        <%= grunt.renderMarkdown(json.strings.intro.text) %>
+      </div>
+    </header>
+
+    <main>
+
+      <section class="timeline">
+        <% json.events.forEach(function(row) { %>
+        <div class="event">
+          <h2><%= row.date %> <%= row.header ? "- " + row.header : "" %></h2>
+          <div class="text">
+            <%= row.body ? grunt.renderMarkdown(row.body) : "" %>
+          </div>
+        </div>
+        <% }) %>
+      </section>
+
+    </main>
+
+    <%= t.include("partials/_navBottom.html") %>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>
