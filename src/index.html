@@ -21,9 +21,14 @@
 
       <section class="timeline">
         <% json.events.forEach(function(row) { %>
-        <div class="event">
+        <div class="event <%= row.body ? "big" : "small" %>">
           <h2><%= row.date %> <%= row.header ? "- " + row.header : "" %></h2>
           <div class="text">
+            <% if (row.photo) { %>
+            <div class="photo">
+              <img src="./assets/photos/<%= row.photo %>">
+            </div>
+            <% } %>
             <%= row.body ? grunt.renderMarkdown(row.body) : "" %>
           </div>
         </div>

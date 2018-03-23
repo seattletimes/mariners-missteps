@@ -16,12 +16,55 @@ main {
 }
 
 .timeline {
-  max-width: 500px;
   margin: auto;
 
-  .event {
-    margin: 40px;
-    border: 1px solid @df-light-gray;
-    padding: 20px;
+  .photo {
+    float: right;
+    position: relative;
+    max-width: 50%;
+    margin-left: 10px;
   }
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .event {
+    margin-top: 10vh;
+    border-top: 3px solid @df-blue;
+    padding: 20px;
+    background: white;
+    overflow: hidden;
+
+    &.small {
+      background: @df-blue;
+      padding: 10px;
+      border-top: none;
+      @step: 6px;
+      @width: 2px;
+      @stripe: fade(white, 30%);
+      background-image: 
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent @step,
+          @stripe @step,
+          @stripe (@step + @width),
+          transparent (@step + @width)
+        ),
+        linear-gradient(to bottom, @df-blue, lighten(desaturate(@df-blue, 40%), 10%));
+
+      h2 {
+        color: white;
+        margin: 0;
+        text-align: center;
+        font-style: italic;
+      }
+    }
+  }
+
+}
+
+footer {
+  clear: both;
 }
