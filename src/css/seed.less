@@ -16,7 +16,7 @@ main {
 }
 
 .timeline {
-  margin: auto;
+  margin: 200px auto;
 
   .photo {
     float: right;
@@ -63,6 +63,36 @@ main {
     }
   }
 
+}
+
+.fans {
+  position: relative;
+  max-width: 700px;
+  width: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transition: opacity .2s linear;
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  [data-fan="1"] {
+    position: static;
+  }
 }
 
 footer {
