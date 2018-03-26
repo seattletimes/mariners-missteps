@@ -33,6 +33,10 @@ header {
     margin: auto;
     max-width: 600px;
     text-align: left;
+
+    @media @mobile {
+      padding: 0 16px;
+    }
   }
 }
 
@@ -42,7 +46,7 @@ main {
 }
 
 .timeline {
-  margin: 200px auto;
+  margin: 100px auto;
 
   &.loaded .photo {
     transform: translateY(10px);
@@ -55,6 +59,11 @@ main {
     position: relative;
     max-width: 50%;
     margin-right: 10px;
+
+    @media @mobile {
+      float: none;
+      max-width: 100%;
+    }
   }
 
   .wide .photo {
@@ -144,6 +153,14 @@ main {
   top: 50%;
   left: 50%;
   transition: opacity .2s linear;
+  pointer-events: none;
+
+  @media @mobile {
+    top: auto;
+    left: 0;
+    bottom: -100px;
+    width: 100%;
+  }
 
   &.hidden {
     opacity: 0;
@@ -163,6 +180,10 @@ main {
     font-family: @df-sans;
     font-weight: bold;
     font-size: 16px;
+
+    @media @mobile {
+      display: none;
+    }
   }
 
   img {
