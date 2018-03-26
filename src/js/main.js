@@ -16,6 +16,8 @@ var fans = {
   sad: {}
 };
 
+timeline.classList.add("loaded");
+
 $(".fans img").forEach(function(img) {
   var id = img.getAttribute("data-fan");
   var mood = img.classList.contains("happy") ? "happy" : "sad";
@@ -25,7 +27,7 @@ $(".fans img").forEach(function(img) {
   primer.src = img.src;
 });
 
-var currentMood = 0;
+var currentItem = null;
 
 window.addEventListener("scroll", debounce(function() {
   var tBounds = timeline.getBoundingClientRect();
@@ -36,16 +38,21 @@ window.addEventListener("scroll", debounce(function() {
     return;
   }
   var mood = 0;
+  var event = null;
   for (var i = 0; i < events.length; i++) {
-    var e = events[i];
-    var bounds = e.getBoundingClientRect();
+    event = events[i];
+    var bounds = event.getBoundingClientRect();
     if (bounds.bottom > 0 && bounds.top < window.innerHeight * .5) {
-      mood = e.getAttribute("data-mood") * 1;
+      mood = event.getAttribute("data-mood") * 1;
       break;
     }
   }
-  if (currentMood == mood) return;
-  currentMood = mood;
+  if (currentItem == event) return;
+  var existing = $.one(".current");
+  if (existing) existing.classList.remove("current");
+  currentItem = event;
+  currentItem.classList.add("visible");
+  currentItem.classList.add("current");
   var bars = "▓";
   for (var j = 1; j <= 6; j++) {
     if (j <= mood) {

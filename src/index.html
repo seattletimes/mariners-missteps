@@ -23,13 +23,16 @@
       <div class="chatter">
         <%= grunt.renderMarkdown(json.strings.intro.text) %>
       </div>
+      <div class="torn-cover">
+        <img src="./assets/torn.jpg">
+      </div>
     </header>
 
     <main>
 
       <section class="timeline">
         <% json.events.forEach(function(row, i) { %>
-        <div class="event <%= row.body ? "big" : "small" %>" data-mood="<%= i % 7 %>">
+        <div class="event <%= row.body ? "big" : "small" %> <%= row.full ? "wide" : "floated" %>" data-mood="<%= i % 7 %>">
           <h2><%= row.date %> <%= row.header ? "- " + row.header : "" %></h2>
           <div class="text">
             <% if (row.photo) { %>
@@ -43,7 +46,7 @@
         <% }) %>
       </section>
 
-      <div class="fans" aria-hidden="true">
+      <div class="fans hidden" aria-hidden="true">
         <% for (var i = 1; i < 7; i++) { %>
         <img src="./assets/fans/h-<%= i %>.png" class="happy" data-fan="<%= i %>">
         <img src="./assets/fans/s-<%= i %>.png" class="sad" data-fan="<%= i %>">
