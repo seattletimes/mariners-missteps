@@ -3,6 +3,7 @@
   <head>
     <%= t.include("partials/_head.html", grunt.data.json) %>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   </head>
   <body>
 
@@ -11,17 +12,26 @@
     <%= t.include("partials/_ad.html", { type: "banner" }) %>
 
     <header class="splash">
-      <h1>Mariners Missteps</h1>
-      <h2>
-        A history of disappointment
-      </h2>
-      <div class="triplets">
-        <img src="./assets/photos/mariners1.jpg">
-        <img src="./assets/photos/mariners2.jpg">
-        <img src="./assets/photos/mariners3.jpg">
+      <div class="side-by-side">
+        <div class="cell">
+          <img src="./assets/header.jpg">
+        </div>
+        <div class="cell">
+          <h1>Mariners Missteps</h1>
+        </div>
       </div>
+      
       <div class="chatter">
-        <%= grunt.renderMarkdown(json.strings.intro.text) %>
+      
+        <p>
+          <span class="pull">The year is 2001, and Seattle is awash in America’s past time.</span> Fresh off hosting a sun-drenched All-Star Game in a brand-new ballpark — a going-away party for two of baseball’s all-time greats and a celebration of its newest sensation in front of its home crowd — the city could have hardly known it was nearing the end of the most successful stretch in franchise history, seven years in which the Mariners would make four playoff appearances and nearly 20 million fans would cross the turnstiles. They broke a century-old MLB record and were home to some of the game’s biggest names. 
+
+        <p>
+          Those years were not without strife, and those that followed were full of it. Stars departed; a World Series was never won. And over the cliff, the longest postseason drought of any team in professional sports.
+
+        <p>
+          So how did they get here, and what went wrong? We take you to the fall of 2001. The Mariners, with their 116 regular-season wins, have been convincingly eliminated in the American League Championship Series by those…
+
       </div>
       <div class="torn-cover">
         <img src="./assets/torn.jpg">
@@ -32,7 +42,10 @@
 
       <section class="timeline">
         <% json.events.forEach(function(row, i) { %>
-        <div class="event <%= row.body ? "big" : "small" %> <%= row.full ? "wide" : "floated" %>" data-mood="<%= i % 7 %>">
+        <div
+          class="event <%= row.body ? "big" : "small" %> <%= row.full ? "wide" : "floated" %>"
+          data-mood="<%= row.crowd %>"
+        >
           <h2><%= row.date %> <%= row.header ? "- " + row.header : "" %></h2>
           <div class="text">
             <% if (row.photo) { %>
@@ -56,7 +69,38 @@
         </div>
       </div>
 
+      <div class="triplets">
+        <img src="./assets/photos/mariners1.jpg">
+        <img src="./assets/photos/mariners2.jpg">
+        <img src="./assets/photos/mariners3.jpg">
+      </div>
+
+      <section class="outro">
+        <h2>Three reasons Mariners fans should be optimistic</h2>
+
+        <div class="reasons">
+          <%= grunt.renderMarkdown(json.strings.why.text) %>
+        </div>
+
+        <h2>...and three reasons they shouldn't</h2>
+
+        <div class="reasons">
+          <%= grunt.renderMarkdown(json.strings.why_not.text) %>
+        </div>
+      </section>
+
     </main>
+
+    <%= t.include("partials/_dontMiss.html", { data: json.quads }) %>
+
+    <footer class="credits">
+      <ul>
+        <li> Art: Jennifer Luxton
+        <li> Writing: Ryan Divish
+        <li> Production: Evan Webeck
+        <li> Development: Thomas Wilburn
+      </ul>
+    </footer>
 
     <%= t.include("partials/_navBottom.html") %>
 

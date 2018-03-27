@@ -53,12 +53,12 @@ window.addEventListener("scroll", debounce(function() {
   currentItem = event;
   currentItem.classList.add("visible");
   currentItem.classList.add("current");
-  var bars = "▓";
+  var bars = "";
   for (var j = 1; j <= 6; j++) {
     if (j <= mood) {
       fans.happy[j].classList.add("show");
       fans.sad[j].classList.remove("show");
-      bars += "▓";
+      bars += "&bigstar;";
     } else {
       fans.happy[j].classList.remove("show");
       fans.sad[j].classList.add("show");
