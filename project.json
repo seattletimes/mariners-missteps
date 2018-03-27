@@ -9,12 +9,12 @@
       "path": ""
     }
   },
-  "title": "",
-  "description": "",
+  "title": "Mariners Missteps",
+  "description": "A brief history of disappointment",
   "url": "",
   "image": "assets/social.jpg",
   "sheets": ["1GwJ2IrgZnCSYDtW3xR-ojyxCblPelNbwtm73j0uCWgI"],
   "standout": false,
-  "embedded": true,
+  "embedded": false,
   "production": false
 }
