@@ -1,5 +1,7 @@
 @import "seattletimes";
 
+@mariners-teal: #5baca6;
+
 header {
   text-align: center;
   max-width: 1600px;
@@ -9,29 +11,57 @@ header {
     .display-flex();
     .align-items(center);
     .justify-content(center);
+    position: relative;
+    background: #cad4ce;
 
     img {
       width: 100%;
+      display: block;
     }
 
     .cell {
       .flex(0 0 50%);
     }
+
+    @media @mobile {
+      display: block;
+    }
   }
 
   h1 {
     font-size: 90px;
-    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
     font-family: Lobster, @df-serif;
     font-weight: normal;
+
+    @media @mobile {
+      font-size: 60px;
+      position: absolute;
+      top: 0px;
+      color: white;
+      background: linear-gradient(to bottom, fade(black, 60%), transparent);
+      padding: 10px 0 30px;
+    }
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 20px;
     margin: 0;
-    font-style: italic;
-    text-transform: uppercase;
-    color: darken(@df-blue, 20%);
+    padding: 40px;
+    font-weight: normal;
+  }
+
+  .credits {
+    padding: 16px;
+    ul {
+      list-style-type: none;
+      font-family: @df-sans;
+      font-size: 15px;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
   }
 
   .chatter {
@@ -99,13 +129,13 @@ main {
   }
 
   .event {
-    margin-top: 10vh;
-    border-top: 3px solid @df-blue;
+    margin-top: 5vh;
+    border-top: 3px solid @mariners-teal;
     padding: 20px;
     background: white;
     position: relative;
-    opacity: .9;
     transition: opacity .2 linear;
+    font-size: 17px;
 
     &::after {
       display: block;
@@ -114,8 +144,7 @@ main {
     }
 
     &.current {
-      opacity: 1;
-
+      
       &::before {
         content: "";
         position: absolute;
@@ -128,28 +157,23 @@ main {
         width: 0;
         height: 0;
         border-width: 20px 20px 0px 0px;
-        border-color: black transparent;
+        border-color: @mariners-teal transparent;
         border-style: solid;
       }
     }
 
     &.small {
-      background: @df-blue;
+      background: @mariners-teal;
       padding: 10px;
       border-top: none;
       @step: 6px;
       @width: 2px;
       @stripe: fade(white, 30%);
-      background-image: 
-        repeating-linear-gradient(
-          -45deg,
-          transparent,
-          transparent @step,
-          @stripe @step,
-          @stripe (@step + @width),
-          transparent (@step + @width)
-        ),
-        linear-gradient(to bottom, @df-blue, lighten(desaturate(@df-blue, 40%), 10%));
+      background-image: linear-gradient(to bottom, @mariners-teal, lighten(@mariners-teal, 10%));
+
+      &.current::before {
+        border-color: white transparent;
+      }
 
       h2 {
         color: white;
@@ -175,7 +199,7 @@ main {
   @media @mobile {
     top: auto;
     left: 0;
-    bottom: -100px;
+    bottom: -110px;
     width: 100%;
   }
 
@@ -189,8 +213,8 @@ main {
     right: 0;
     width: 50%;
     max-width: 700px;
-    background: @df-blue;
-    background: linear-gradient(to right, @df-blue, transparent);
+    background: @mariners-teal;
+    background: linear-gradient(to right, @mariners-teal, transparent);
     color: white;
     text-transform: uppercase;
     padding: 8px 24px;
@@ -232,6 +256,11 @@ main {
 }
 
 .outro {
+
+  @media @mobile {
+    padding: 0 16px;
+  }
+
   h2 {
     font-family: Lobster, @df-sans;
     font-size: 32px;
@@ -241,7 +270,14 @@ main {
   .reasons {
     h3 {
       font-size: 19px;
+      clear: both;
     }
+  }
+
+  img {
+    float: right;
+    max-width: 33%;
+    margin: 0 0 20px 10px;
   }
 }
 
