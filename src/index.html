@@ -12,15 +12,15 @@
     <%= t.include("partials/_ad.html", { type: "banner" }) %>
 
     <header class="splash">
-      <h1>Mariners Missteps</h1>
-      <h2>
-        A history of disappointment
-      </h2>
-      <div class="triplets">
-        <img src="./assets/photos/mariners1.jpg">
-        <img src="./assets/photos/mariners2.jpg">
-        <img src="./assets/photos/mariners3.jpg">
+      <div class="side-by-side">
+        <div class="cell">
+          <img src="./assets/header.jpg">
+        </div>
+        <div class="cell">
+          <h1>Mariners Missteps</h1>
+        </div>
       </div>
+      
       <div class="chatter">
       
         <p>
@@ -67,6 +67,12 @@
         <div class="meter">
           Enthusiasm: <span class="enthusiasm"></span>
         </div>
+      </div>
+
+      <div class="triplets">
+        <img src="./assets/photos/mariners1.jpg">
+        <img src="./assets/photos/mariners2.jpg">
+        <img src="./assets/photos/mariners3.jpg">
       </div>
 
       <section class="outro">
