@@ -6,8 +6,10 @@ header {
   margin: auto;
 
   h1 {
-    font-size: 72px;
+    font-size: 90px;
     margin-bottom: 0;
+    font-family: Lobster, @df-serif;
+    font-weight: normal;
   }
 
   h2 {
@@ -34,6 +36,14 @@ header {
     max-width: 600px;
     text-align: left;
 
+    .pull {
+      font-family: Lobster, @df-serif;
+      font-size: 150%;
+      display: block;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
     @media @mobile {
       padding: 0 16px;
     }
@@ -47,6 +57,10 @@ main {
 
 .timeline {
   margin: 100px auto;
+  border-style: dashed;
+  border-color: @df-light-gray;
+  border-width: 2px 0;
+  padding-bottom: 40px;
 
   &.loaded .photo {
     transform: translateY(10px);
@@ -200,6 +214,38 @@ main {
 
   [data-fan="1"] {
     position: static;
+  }
+}
+
+.outro {
+  h2 {
+    font-family: Lobster, @df-sans;
+    font-size: 32px;
+    font-weight: normal;
+  }
+
+  .reasons {
+    h3 {
+      font-size: 19px;
+    }
+  }
+}
+
+footer.credits {
+  background: @df-light-gray;
+  padding: 40px 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0 auto;
+    max-width: 800px;
+    font-family: @df-sans;
+    font-size: 16px;
+    padding: 0;
+
+    @media @mobile {
+      padding: 16px;
+    }
   }
 }
 
