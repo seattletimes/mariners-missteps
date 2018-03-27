@@ -33,6 +33,10 @@ header {
     margin: auto;
     max-width: 600px;
     text-align: left;
+
+    @media @mobile {
+      padding: 0 16px;
+    }
   }
 }
 
@@ -42,13 +46,35 @@ main {
 }
 
 .timeline {
-  margin: 200px auto;
+  margin: 100px auto;
 
-  .photo {
-    float: right;
+  &.loaded .photo {
+    transform: translateY(10px);
+    opacity: .2;
+    transition: all .2s linear;
+  }
+
+  .floated .photo {
+    float: left;
     position: relative;
     max-width: 50%;
-    margin-left: 10px;
+    margin-right: 10px;
+
+    @media @mobile {
+      float: none;
+      max-width: 100%;
+    }
+  }
+
+  .wide .photo {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .visible .photo {
+    transform: translate(0);
+    opacity: 1;
   }
 
   h2 {
@@ -60,7 +86,35 @@ main {
     border-top: 3px solid @df-blue;
     padding: 20px;
     background: white;
-    overflow: hidden;
+    position: relative;
+    opacity: .9;
+    transition: opacity .2 linear;
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
+    &.current {
+      opacity: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 5px;
+        left: 5px;
+        font-weight: bold;
+        font-family: @df-sans;
+        color: black;
+        width: 0;
+        height: 0;
+        border-width: 20px 20px 0px 0px;
+        border-color: black transparent;
+        border-style: solid;
+      }
+    }
 
     &.small {
       background: @df-blue;
@@ -99,6 +153,14 @@ main {
   top: 50%;
   left: 50%;
   transition: opacity .2s linear;
+  pointer-events: none;
+
+  @media @mobile {
+    top: auto;
+    left: 0;
+    bottom: -100px;
+    width: 100%;
+  }
 
   &.hidden {
     opacity: 0;
@@ -118,6 +180,10 @@ main {
     font-family: @df-sans;
     font-weight: bold;
     font-size: 16px;
+
+    @media @mobile {
+      display: none;
+    }
   }
 
   img {
