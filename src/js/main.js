@@ -1,6 +1,6 @@
 require("./lib/ads");
 var paywall = require("./lib/paywall");
-paywall(/* ID GOES HERE */);
+paywall(10767520);
 // var track = require("./lib/tracking");
 
 require("component-responsive-frame/child");
