@@ -12,56 +12,79 @@ header {
     .align-items(center);
     .justify-content(center);
     position: relative;
-    background: #cad4ce;
+    background: lighten(#EEF8F9, 0%);
 
-    img {
+    .header {
       width: 100%;
       display: block;
     }
 
     .cell {
       .flex(0 0 50%);
+
+      @media @mobile {
+        &.text {
+          padding: 16px;
+        }
+      }
     }
 
     @media @mobile {
       display: block;
+
+      .script {
+        display: none;
+      }
+    }
+  }
+
+  h3 {
+    text-transform: uppercase;
+    text-size: 14px;
+    margin: 0;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  hr {
+    margin: 20px auto;
+    width: 100px;
+    background: @mariners-teal;
+    height: 6px;
+    border-radius: 4px;
+
+    @media @mobile {
+      display: none;
     }
   }
 
   h1 {
     font-size: 90px;
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 40px auto;
     font-family: Lobster, @df-serif;
     font-weight: normal;
 
     @media @mobile {
+      margin: 0;
       font-size: 60px;
       position: absolute;
       top: 0px;
+      left: 0px;
       color: white;
+      width: 100%;
+      display: block;
       background: linear-gradient(to bottom, fade(black, 60%), transparent);
       padding: 10px 0 30px;
     }
   }
 
   h2 {
-    font-size: 20px;
-    margin: 0;
-    padding: 40px;
-    font-weight: normal;
-  }
-
-  .credits {
-    padding: 16px;
-    ul {
-      list-style-type: none;
-      font-family: @df-sans;
-      font-size: 15px;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-    }
+    font-size: 16px;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 400px;
   }
 
   .chatter {
@@ -79,6 +102,31 @@ header {
 
     @media @mobile {
       padding: 0 16px;
+    }
+  }
+
+  .credits {
+    list-style-type: none;
+    font-family: @df-sans;
+    font-size: 16px;
+    margin: 0;
+    padding: 20px 0;
+
+    li {
+      display: inline-block;
+
+      @media @mobile {
+        display: block;
+      }
+
+      &:not(:first-child)::before {
+        content: "•";
+        margin-left: 8px;
+
+        @media @mobile {
+          display: none;
+        }
+      }
     }
   }
 }
