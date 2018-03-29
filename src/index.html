@@ -38,7 +38,7 @@
       <div class="chatter">
 
         <p>
-          <span class="pull">The year is 2001, and Seattle is awash in America’s past time.</span> Fresh off hosting a sun-drenched All-Star Game in a brand-new ballpark — a going-away party for two of baseball’s all-time greats and a celebration of its newest sensation in front of its home crowd — the city could have hardly known it was nearing the end of the most successful stretch in franchise history, seven years in which the Mariners would make four playoff appearances and nearly 20 million fans would cross the turnstiles. They broke a century-old MLB record and were home to some of the game’s biggest names.
+          <span class="pull">The year is 2001, and Seattle is awash in America’s pastime.</span> Fresh off hosting a sun-drenched All-Star Game in a brand-new ballpark — a going-away party for two of baseball’s all-time greats and a celebration of its newest sensation in front of its home crowd — the city could have hardly known it was nearing the end of the most successful stretch in franchise history, seven years in which the Mariners would make four playoff appearances and nearly 20 million fans would cross the turnstiles. They broke a century-old MLB record and were home to some of the game’s biggest names.
 
         <p>
           Those years were not without strife, and those that followed were full of it. Stars departed; a World Series was never won. And over the cliff, the longest postseason drought of any team in professional sports.
@@ -67,10 +67,11 @@
               <img src="./assets/photos/<%= row.photo %>" alt="">
             </div>
             <% } %>
-            <%= row.body ? grunt.renderMarkdown(row.body) : "" %>
+            <%= row.body ? t.renderMarkdown(row.body) : "" %>
           </div>
         </div>
         <% }) %>
+
       </section>
 
       <div class="fans hidden" aria-hidden="true">
@@ -83,6 +84,8 @@
         </div>
       </div>
 
+      <%= t.renderMarkdown(json.strings.outro.text) %>
+      
       <div class="triplets">
         <img src="./assets/photos/mariners1.jpg" alt="">
         <img src="./assets/photos/mariners2.jpg" alt="">
@@ -90,17 +93,18 @@
       </div>
 
       <section class="outro">
+
         <h2>Three reasons Mariners fans should be optimistic</h2>
         <p><em><b>by Ryan Divish</b></em></p>
 
         <div class="reasons">
-          <%= grunt.renderMarkdown(json.strings.why.text) %>
+          <%= t.renderMarkdown(json.strings.why.text) %>
         </div>
 
         <h2>...and three reasons they shouldn't</h2>
 
         <div class="reasons">
-          <%= grunt.renderMarkdown(json.strings.why_not.text) %>
+          <%= t.renderMarkdown(json.strings.why_not.text) %>
         </div>
       </section>
 
